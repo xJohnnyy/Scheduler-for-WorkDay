@@ -2,7 +2,7 @@
 
 ## Description
 
-In this module challenge, we created a work day schedler. This schedulre can be used to help organize past, current, and future events. Each time interval is color coordinated to help the user stay organized.
+In this module challenge, we created a work day scheduler. This scheduler can be used to help organize past, current, and future events. Each time interval is color coordinated to help the user stay organized.
 
 ## Usage
 
@@ -10,6 +10,7 @@ Image of Completed Website:
 ![Image of Completed Website](Assets/images/05-third-party-apis-homework-demo.gif)
 
 URL of the deployed webpage: 
+https://xjohnnyy.github.io/Scheduler-for-WorkDay/
 
 
 ## Credits
