@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="refresh" content="300" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <link
       rel="stylesheet"
@@ -17,7 +16,7 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -25,55 +24,112 @@
   </head>
 
   <body>
-    <header class="p-5 mb-4">
+    <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container-fluid px-5">
-      <!-- Use class for "past", "present", and "future" to apply styles to the
-        time-block divs accordingly. The javascript will need to do this by
-        adding/removing these classes on each div by comparing the hour in the
-        id to the current hour. The html provided below is meant to be an example
-        demonstrating how the css provided can be leveraged to create the
-        desired layout and colors. The html below should be removed or updated
-        in the finished product. Remember to delete this comment once the
-        code is implemented.
-        -->
+    <div class="container">
 
-      <!-- Example of a past time block. The "past" class adds a gray background color. -->
-      <div id="hour-9" class="row time-block past">
-        <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
-        </button>
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-0"></span>
+        </div>
+        <input type="text" id = "0" name="9am-todo" class="form-control HourForm" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-0">Save</button>
+        </div>
       </div>
 
-      <!-- Example of a present time block. The "present" class adds a red background color. -->
-      <div id="hour-10" class="row time-block present">
-        <div class="col-2 col-md-1 hour text-center py-3">10AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
-        </button>
+      <div class="input-group input-group-lg HourRow" id = "10 AM">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-1"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id="1" name="10am-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-1">Save</button>
+        </div>
       </div>
 
-      <!-- Example of a future time block. The "future" class adds a green background color. -->
-      <div id="hour-11" class="row time-block future">
-        <div class="col-2 col-md-1 hour text-center py-3">11AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
-        </button>
+      <div class="input-group input-group-lg HourRow" id = "11 AM">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-2"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "2" name="11am-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-2">Save</button>
+        </div>
       </div>
+
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-3"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "3" name="12pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-3">Save</button>
+        </div>
+      </div>
+
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-4"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "4" name="1pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-4">Save</button>
+        </div>
+      </div>
+   
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-5"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "5" name="2pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-5">Save</button>
+        </div>
+      </div>
+
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-6"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "6" name="3pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-6">Save</button>
+        </div>
+      </div>
+
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-7"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "7" name="4pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-7">Save</button>
+        </div>
+      </div>
+
+      <div class="input-group input-group-lg HourRow">
+        <div class="input-group-prepend">
+          <span class="input-group-text Hour" id="inputGroup-sizing-lg span-8"></span>
+        </div>
+        <input type="text" class="form-control HourForm" id = "8" name="5pm-todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" id="saveToDo-8">Save</button>
+        </div>
+      </div>
+   
+   
+      
+      
     </div>
+    
+    <footer></footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
