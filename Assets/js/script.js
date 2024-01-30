@@ -1,36 +1,70 @@
 $(document).ready(function(){
 
-
-  $("#currentDay").text(moment().format("dddd, MMMM Do"));
+  const $currentDay = $('#currentDay');
+  const saveButton = $('button');
+  const alertList = $('.alert');
+  const alerts = alertList.map((i, element) => new bootstrap.Alert(element)).get();
   
-  var timeArray = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"]
-  var currentTime = moment().format("h A");
+  const localStorageMap = JSON.parse(localStorage.getItem('map')) || {};
+  const mergedStorage = { ...localStorageMap, ...{} };
   
-  $(".Hour").each(function(i){
-      $(this).text(moment().hour(i+9).format("h A")) 
-  })
-  console.log(currentTime);
+  function saveLocalStorage(bodyText, id) {
+    mergedStorage[id] = bodyText;
+    localStorage.setItem('map', JSON.stringify(mergedStorage));
+  }
   
-  $('.HourRow').each(function(i) {
-      console.log(timeArray.indexOf(currentTime));
-      if (timeArray.indexOf(currentTime) > i) {
-        $(`#${i}`).addClass('past');
-        $(`#saveToDo-${i}`).prop('disabled', true);
-        $(`#saveToDo-${i}`).addClass('past');
-        $(`#hour-${i}`).addClass('past');
-      } else if (timeArray.indexOf(currentTime) == i) {
-        $(`#${i}`).addClass('present');
-        $(`#saveToDo-${i}`).addClass('present');
-        $(`#saveToDo-${i}`).prop('disabled', false);
-        $(`#hour-${i}`).addClass('present');
-      } else if (timeArray.indexOf(currentTime) < i) {
-        $(`#${i}`).addClass('future');
-        $(`#saveToDo-${i}`).addClass('future');
-        $(`#saveToDo-${i}`).prop('disabled', false);
-        $(`#hour-${i}`).addClass('future');
+  function saveEvent(event) {
+    event.preventDefault();
+  
+    if (event.target.className === 'btn-close') {
+      alertList.addClass('d-none');
+      return;
+    }
+    const $description = $(event.target).parent().children('.description');
+    const bodyText = $description.val().trim();
+    const bodyId = $description.attr('id');
+    saveLocalStorage(bodyText, bodyId);
+  
+    alertList.removeClass('d-none');
+  }
+  
+  function checkTime() {
+    $currentDay.text(`${dayjs().format('dddd, MMMM D, hh:mm:ss a')}`);
+  
+    for (let i = 9; i <= 17; i++) {
+      const $timeDiv = $(`#hour-${i}`);
+      let timeEl = $timeDiv.children('div').text().slice(0, -2);
+      let currentHour = parseInt(dayjs().format('HH'), 10);
+  
+      if (i >= 13) {
+        timeEl = (parseInt(timeEl, 10) + 12).toString();
       }
-    });
-  });   
+  
+      $timeDiv.removeClass('past present future');
+  
+      if (timeEl < currentHour) {
+        $timeDiv.addClass('past');
+      } else if (timeEl === currentHour.toString()) {
+        $timeDiv.addClass('present');
+      } else {
+        $timeDiv.addClass('future');
+      }
+    }
+  }
+  
+  function init() {
+    for (const key in localStorageMap) {
+      $(`#${key}`).text(localStorageMap[key]);
+    }
+  
+    checkTime();
+  }
+  
+  saveButton.on('click', saveEvent);
+  setInterval(checkTime, 1000);
+  
+  init();
+  });
   
     $("button").on("click", function(){
         $('input, select, textarea').each(function() {

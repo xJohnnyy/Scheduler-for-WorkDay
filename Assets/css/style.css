@@ -13,23 +13,6 @@ textarea{
   padding: 10px;
 }
 
-footer{
-  margin-top: 5rem;
-}
-
-span{
-  width: 5.75rem;
-  justify-content: center;
-}
-
-.jumbotron {
-  text-align: center;
-  background-color: transparent;
-  color: black;
-  border-radius: 0;
-  border-bottom: 10px solid black;
-}
-
 .description{
   white-space: pre-wrap;
 }
@@ -41,7 +24,6 @@ span{
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
   border-top: 1px solid white;;
 }
 
